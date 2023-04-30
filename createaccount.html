@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Account</title>
+    <meta charset="UTF-8">
+    <script src="validation.js"></script>
+  </head>
+  <body>
+    <h1>Create Account</h1>
+    <form method="post" action="create_account.php" onsubmit="return validateForm()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br>
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required><br>
+	  <label for="phone">Phone:</label>
+      <input type="number" id="phone" name="phone" required><br>
+	  <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" required><br>
+	  <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" required><br>
+      <label for="address1">Address 1:</label>
+      <input type="text" id="address1" name="address1" required><br>
+	  <label for="address2">Address 2:</label>
+      <input type="text" id="address2" name="address2"><br>
+	  <label for="city">City:</label>
+      <input type="text" id="city" name="city" required><br>
+	  <label for="state">State:</label>
+      <input type="text" id="state" name="state" required><br>
+      <input type="submit" value="Create Account">
+	  <label for="zip">Zip:</label>
+      <input type="number" id="zip" name="zip" required><br>
+    </form>
+  </body>
+</html>
