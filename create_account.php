@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve form data
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
@@ -12,25 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $city = $_POST["city"];
     $state = $_POST["state"];
     $zip = $_POST["zip"];
-
-    // Validate form data
     if (empty($username) || empty($password) || empty($email) || empty($phone)
         || empty($address1) || empty($fname) || empty($lname) || empty($city) || empty($state) || empty($zip)){
         echo '<p>All fields except address 2 are required. Please try again.</p>';
     } else {
-        // Connect to MySQL database
         $servername = 'studentdb-maria.gl.umbc.edu';
         $dbusername = 'nordman1';
         $dbpassword = 'nordman1';
         $dbname = 'nordman1';
         $con = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
-
-        // Prepare and execute SQL statement with bound parameters
         $stmt = mysqli_prepare($con, "INSERT INTO Users (username, password, fname, lname, email, address1, address2, city, state, zip, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sssssssssss", $username, $password, $fname, $lname, $email, $address1, $address2, $city, $state, $zip, $phone);
         $result = mysqli_stmt_execute($stmt);
-
-        // Check for errors and provide specific error messages
         if (!$result) {
             echo '<p>Error inserting data into database. Please try again later.</p>';
             echo '<p>Error message: ' . mysqli_error($con) . '</p>';
